@@ -1,0 +1,13 @@
+<div class="toast-container">
+  @for (toast of toastService.toasts(); track toast.id) {
+    <div
+      class="toast"
+      [class.show]="toast.visible"
+      [class.success]="toast.type === 'success'"
+      [class.error]="toast.type === 'error'"
+    >
+      <span class="toast__message">{{ toast.message }}</span>
+      <button class="toast__close" (click)="toastService.remove(toast.id)">&times;</button>
+    </div>
+  }
+</div>

@@ -1,0 +1,30 @@
+@if (store.loading()) {
+  <div class="grid-loading">
+    <div class="grid-loading__spinner"></div>
+    <span class="grid-loading__text">Loading devices...</span>
+  </div>
+} @else if (store.filteredDevices().length === 0) {
+  <div class="grid-empty">
+    <div class="grid-empty__icon">&#128268;</div>
+    <p class="grid-empty__text">No devices found</p>
+    <button class="grid-empty__btn" (click)="store.discover()">Scan for devices</button>
+  </div>
+} @else {
+  <div class="grid">
+    @for (device of store.filteredDevices(); track device.id) {
+      <app-device-card
+        [device]="device"
+        (toggled)="onToggled($event)"
+        (editClicked)="onEditClicked($event)"
+      />
+    }
+  </div>
+}
+
+<app-device-edit-modal
+  [device]="editDevice()"
+  [open]="editModalOpen()"
+  [existingRooms]="existingRooms"
+  (saved)="onModalSaved($event)"
+  (closed)="onModalClosed()"
+/>

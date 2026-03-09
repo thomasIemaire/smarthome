@@ -1,0 +1,45 @@
+@if (open()) {
+  <div class="overlay" (click)="onOverlayClick($event)">
+    <div class="modal">
+      <h3 class="modal__title">{{ isEditing() ? 'Edit Group' : 'New Group' }}</h3>
+
+      <div class="modal__field">
+        <label class="modal__label">Name</label>
+        <input
+          type="text"
+          class="modal__input"
+          [value]="name()"
+          (input)="name.set($any($event.target).value)"
+          placeholder="Group name"
+        />
+      </div>
+
+      <div class="modal__field">
+        <label class="modal__label">Devices</label>
+        <div class="modal__checklist">
+          @for (device of devices(); track device.id) {
+            <label class="modal__check-item">
+              <input
+                type="checkbox"
+                [checked]="isSelected(device.id)"
+                (change)="toggleDevice(device.id)"
+              />
+              <span class="modal__check-name">{{ device.name }}</span>
+              <span class="modal__check-room">{{ device.room || 'Unassigned' }}</span>
+            </label>
+          }
+        </div>
+      </div>
+
+      <div class="modal__actions">
+        @if (isEditing()) {
+          <button class="modal__btn modal__btn--delete" (click)="onDelete()">Delete</button>
+        }
+        <div class="modal__actions-right">
+          <button class="modal__btn modal__btn--cancel" (click)="onClose()">Cancel</button>
+          <button class="modal__btn modal__btn--save" (click)="onSave()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

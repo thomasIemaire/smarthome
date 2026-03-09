@@ -1,0 +1,52 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__track {
+    width: 40px;
+    height: 22px;
+    border-radius: 11px;
+    background: var(--border);
+    position: relative;
+    transition: background 0.25s ease;
+  }
+
+  &__thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--muted);
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+
+  &.on .toggle__thumb {
+    transform: translateX(18px);
+  }
+
+  &.on.plug .toggle__track {
+    background: rgba(52, 211, 153, 0.25);
+  }
+
+  &.on.plug .toggle__thumb {
+    background: var(--accent-plug);
+  }
+
+  &.on.light .toggle__track {
+    background: rgba(251, 191, 36, 0.25);
+  }
+
+  &.on.light .toggle__thumb {
+    background: var(--accent-light);
+  }
+}

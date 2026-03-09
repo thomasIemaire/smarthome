@@ -1,0 +1,103 @@
+.group-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 40px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__label {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+
+    &:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+
+    &:hover .group-bar__chip-edit {
+      opacity: 1;
+    }
+
+    &.active {
+      background: rgba(52, 211, 153, 0.12);
+      border-color: rgba(52, 211, 153, 0.35);
+      color: var(--accent-plug);
+    }
+
+    &.active .group-bar__chip-dot {
+      background: var(--accent-plug);
+      box-shadow: 0 0 6px rgba(52, 211, 153, 0.5);
+    }
+  }
+
+  &__chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    transition: all 0.2s ease;
+  }
+
+  &__chip-name {
+    pointer-events: none;
+  }
+
+  &__chip-edit {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    margin-left: 2px;
+  }
+
+  &__add {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px dashed var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      border-color: var(--accent-plug);
+      color: var(--accent-plug);
+    }
+  }
+}

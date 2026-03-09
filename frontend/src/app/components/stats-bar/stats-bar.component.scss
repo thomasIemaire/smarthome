@@ -1,0 +1,32 @@
+.stats {
+  display: flex;
+  gap: 28px;
+  padding: 0 40px;
+  margin-bottom: 20px;
+
+  &__item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  &__number {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+
+    &--active {
+      color: var(--accent-plug);
+    }
+
+    &--inactive {
+      color: var(--muted);
+    }
+  }
+
+  &__label {
+    font-size: 13px;
+    color: var(--muted);
+  }
+}

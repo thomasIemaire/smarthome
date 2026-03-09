@@ -1,0 +1,26 @@
+<div class="devices-page">
+  <div class="devices-topbar">
+    <app-room-filter
+      [rooms]="store.rooms()"
+      [selectedRoom]="store.selectedRoom()"
+      [totalCount]="store.devices().length"
+      (roomSelected)="onRoomSelected($event)"
+    />
+    <div class="devices-actions">
+      <button class="action-btn action-btn--scan" [class.scanning]="store.scanning()" (click)="store.discover()">
+        @if (store.scanning()) {
+          <span class="action-spinner"></span>
+        }
+        Scanner
+      </button>
+      <button class="action-btn action-btn--on" (click)="store.allOn()">Tout allumer</button>
+      <button class="action-btn action-btn--off" (click)="store.allOff()">Tout éteindre</button>
+    </div>
+  </div>
+  <app-group-bar />
+  <app-stats-bar
+    [activeCount]="store.activeCount()"
+    [inactiveCount]="store.inactiveCount()"
+  />
+  <app-device-grid />
+</div>

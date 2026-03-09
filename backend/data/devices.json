@@ -1,0 +1,15 @@
+[
+  {
+    "id": "meross_25090520714801512002c4e7ae209750",
+    "name": "Leds Bureau",
+    "room": "Chambre",
+    "type": "light",
+    "protocol": "meross",
+    "ip": "",
+    "gen": 1,
+    "model": null,
+    "meross_uuid": "25090520714801512002c4e7ae209750",
+    "state": true,
+    "icon": "bulb"
+  }
+]

@@ -1,0 +1,6 @@
+<label class="toggle" [class.on]="checked()" [class.plug]="accentType() === 'plug'" [class.light]="accentType() === 'light'">
+  <input type="checkbox" [checked]="checked()" (change)="onToggle()" class="toggle__input" />
+  <div class="toggle__track">
+    <div class="toggle__thumb"></div>
+  </div>
+</label>

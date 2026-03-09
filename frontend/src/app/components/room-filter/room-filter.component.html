@@ -1,0 +1,21 @@
+<div class="filter">
+  <button
+    class="filter__pill"
+    [class.active]="selectedRoom() === 'all'"
+    (click)="selectRoom('all')"
+  >
+    Tout
+    <span class="filter__badge">{{ totalCount() }}</span>
+  </button>
+
+  @for (room of rooms(); track room.name) {
+    <button
+      class="filter__pill"
+      [class.active]="selectedRoom() === room.name"
+      (click)="selectRoom(room.name)"
+    >
+      {{ room.name }}
+      <span class="filter__badge">{{ room.active }}/{{ room.total }}</span>
+    </button>
+  }
+</div>

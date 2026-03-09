@@ -1,0 +1,50 @@
+@if (open()) {
+  <div class="overlay" (click)="onOverlayClick($event)">
+    <div class="modal">
+      <h3 class="modal__title">Edit Device</h3>
+
+      <div class="modal__field">
+        <label class="modal__label">Name</label>
+        <input
+          type="text"
+          class="modal__input"
+          [value]="name()"
+          (input)="name.set($any($event.target).value)"
+        />
+      </div>
+
+      <div class="modal__field">
+        <label class="modal__label">Room</label>
+        <input
+          type="text"
+          class="modal__input"
+          list="room-list"
+          [value]="room()"
+          (input)="room.set($any($event.target).value)"
+        />
+        <datalist id="room-list">
+          @for (r of existingRooms(); track r) {
+            <option [value]="r"></option>
+          }
+        </datalist>
+      </div>
+
+      <div class="modal__field">
+        <label class="modal__label">Type</label>
+        <select
+          class="modal__input"
+          [value]="type()"
+          (change)="type.set($any($event.target).value)"
+        >
+          <option value="plug">Prise</option>
+          <option value="light">Lumiere</option>
+        </select>
+      </div>
+
+      <div class="modal__actions">
+        <button class="modal__btn modal__btn--cancel" (click)="onClose()">Cancel</button>
+        <button class="modal__btn modal__btn--save" (click)="onSave()">Save</button>
+      </div>
+    </div>
+  </div>
+}

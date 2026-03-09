@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="header__left">
+    <div class="header__logo">
+      <span class="header__dot"></span>
+      <span class="header__brand">SmartHome</span>
+    </div>
+    <span class="header__status">{{ store.statusText() }}</span>
+  </div>
+
+  <div class="header__actions">
+    <button class="header__btn header__btn--scan" [class.scanning]="store.scanning()" (click)="store.discover()">
+      @if (store.scanning()) {
+        <span class="header__spinner"></span>
+      }
+      Scanner
+    </button>
+    <button class="header__btn header__btn--on" (click)="store.allOn()">Tout allumer</button>
+    <button class="header__btn header__btn--off" (click)="store.allOff()">Tout eteindre</button>
+  </div>
+</header>
